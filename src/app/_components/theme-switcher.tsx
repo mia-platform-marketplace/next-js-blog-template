@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment*/
+/* eslint-disable @typescript-eslint/no-unused-expressions*/
+/* eslint-disable react/display-name*/
 "use client";
 
 import styles from "./switch.module.css";
 import { memo, useEffect, useState } from "react";
 
 declare global {
-  var updateDOM: () => void;
+  let updateDOM: () => void;
 }
 
 type ColorSchemePreference = "system" | "dark" | "light";
@@ -66,6 +69,7 @@ const Switch = () => {
 
   useEffect(() => {
     // store global functions to local variables to avoid any interference
+    //@ts-ignore
     updateDOM = window.updateDOM;
     /** Sync the tabs */
     addEventListener("storage", (e: StorageEvent): void => {
