@@ -4,10 +4,14 @@ import { Intro } from "@/app/_components/intro";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
 
-export default function Index() {
+export default async function Index() {
   const allPosts = getAllPosts();
 
   console.log('GET all posts', allPosts)
+  
+  var response = await fetchCrudCollection({ endpoint: 'stories' })
+
+  console.log('STORIES', response)
 
   const heroPost = allPosts[0];
 
@@ -30,3 +34,7 @@ export default function Index() {
     </main>
   );
 }
+function fetchCrudCollection(arg0: { endpoint: string; }) {
+  throw new Error("Function not implemented.");
+}
+
