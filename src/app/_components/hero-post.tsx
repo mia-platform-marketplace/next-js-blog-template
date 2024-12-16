@@ -3,6 +3,7 @@ import CoverImage from "@/app/_components/cover-image";
 import { type Author } from "@/interfaces/author";
 import Link from "next/link";
 import DateFormatter from "./date-formatter";
+import { fetchCrudCollection } from "@/lib/api";
 
 type Props = {
   title: string;
@@ -13,7 +14,7 @@ type Props = {
   slug: string;
 };
 
-export function HeroPost({
+export async function HeroPost({
   title,
   coverImage,
   date,
@@ -21,6 +22,12 @@ export function HeroPost({
   author,
   slug,
 }: Props) {
+
+
+  var response = await fetchCrudCollection({ endpoint: 'stories' })
+
+  console.log('STORIES', response)
+
   return (
     <section>
       <div className="mb-8 md:mb-16">
