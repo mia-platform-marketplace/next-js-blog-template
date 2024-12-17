@@ -36,9 +36,13 @@ export async function getPostBySlug(slug: string) {
     query: `slug=${slug}`
   })
 
-  console.log('GET post by SLUG',slug,  postSlug)
+  const authors = await fetchCrudCollection({endpoint: 'authors', query: `_id=${postSlug.authorId}`})
 
-  return postSlug[0]
+  const postSlugWithAuthor = creatPosts(postSlug, authors)
+
+  console.log('GET post by SLUG',slug,  postSlugWithAuthor)
+
+  return postSlugWithAuthor[0]
   // const realSlug = slug.replace(/\.md$/, "");
   // const fullPath = join(postsDirectory, `${realSlug}.md`);
   // const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -74,7 +78,7 @@ const creatPosts = (posts: Post[], authors: Author[]) => {
 
     return {
       ...post,
-      author: author || null
+      author: author || undefined
     };
   });
 

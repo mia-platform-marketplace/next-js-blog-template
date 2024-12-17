@@ -56,22 +56,25 @@ const Index = async () => {
   const host = `${serverRuntimeConfig?.WEBSITE_BASE_PATH}`
 
   const heroPost = allPosts[0]
+  const morePosts = allPosts.slice(1);
 
   return (
     <main>
       <Container>
-        <Intro />
-        { heroPost ? 
+        {allPosts.length? 
+        <>
+          <Intro />
           <HeroPost
             title={heroPost.title}
             coverImage={`${host}${heroPost.coverImage.location}`}
             date={heroPost.date}
-            author={heroPost.author?? undefined}
+            author={heroPost.author}
             slug={heroPost.slug}
             excerpt={heroPost.excerpt}
           />
-          /* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */ :
-          null
+          { morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          </>
+          : null
         }
       </Container>
     </main>
