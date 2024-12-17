@@ -42,8 +42,8 @@ const storiess = [
   }
 ]
 
-export default async function Index() {
-  const allPosts = getAllPosts();
+const Index = async () => {
+  const allPosts = await getAllPosts();
 
   console.log('GET all posts', allPosts)
 
@@ -55,21 +55,18 @@ export default async function Index() {
 
   const host = `${serverRuntimeConfig?.WEBSITE_BASE_PATH}`
 
-
-  console.log('STORIES', storiess)
-
-  const heroPost = storiess[0]
+  const heroPost = allPosts[0]
 
   return (
     <main>
       <Container>
         <Intro />
-        { storiess ? 
+        { heroPost ? 
           <HeroPost
             title={heroPost.title}
             coverImage={`${host}${heroPost.coverImage.location}`}
             date={heroPost.date}
-            author={heroPost.author}
+            author={heroPost.author?? undefined}
             slug={heroPost.slug}
             excerpt={heroPost.excerpt}
           />
@@ -81,3 +78,4 @@ export default async function Index() {
   );
 }
 
+export default Index

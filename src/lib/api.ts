@@ -56,16 +56,20 @@ export async function getAllPosts() {
   // return posts;
   const posts = await fetchCrudCollection({endpoint: 'stories'})
   const authors = await fetchCrudCollection({endpoint: 'authors'})
+  if(posts) {
+    const postsWithAuthors = creatPosts(posts, authors)
+    console.log('GET all POSTS', posts)
+    return postsWithAuthors;
+  }
 
-  const postsWithAuthors = creatPosts(posts, authors)
+  return []
 
-  console.log('GET all POSTS', posts)
-  return postsWithAuthors;
+
 }
 
 
 const creatPosts = (posts: Post[], authors: Author[]) => {
-  return posts.map((post) => {
+  return posts?.map((post) => {
     const author = authors.find((auth) => auth._id === post.authorId);
 
     return {
