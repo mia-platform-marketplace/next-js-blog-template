@@ -4,12 +4,15 @@ export type Post = {
   slug: string;
   title: string;
   date: string;
-  coverImage: string;
-  author: Author;
+  coverImage: {
+    location: string
+  };
+  authorId: string;
   excerpt: string;
   ogImage: {
-    url: string;
+    location: string;
   };
   content: string;
   preview?: boolean;
+  author?: Author
 };

@@ -3,14 +3,13 @@ import CoverImage from "@/app/_components/cover-image";
 import { type Author } from "@/interfaces/author";
 import Link from "next/link";
 import DateFormatter from "./date-formatter";
-import { fetchCrudCollection } from "@/lib/api";
 
 type Props = {
   title: string;
   coverImage: string;
   date: string;
   excerpt: string;
-  author: Author;
+  author?: Author;
   slug: string;
 };
 
@@ -22,11 +21,6 @@ export async function HeroPost({
   author,
   slug,
 }: Props) {
-
-
-  var response = await fetchCrudCollection({ endpoint: 'stories' })
-
-  console.log('STORIES', response)
 
   return (
     <section>
@@ -46,7 +40,9 @@ export async function HeroPost({
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-          <Avatar name={author.name} picture={author.picture} />
+          {author?
+            <Avatar name={`${author.firstName} ${author.lastName}`} picture={author.coverImage.location} />: null
+          }
         </div>
       </div>
     </section>
