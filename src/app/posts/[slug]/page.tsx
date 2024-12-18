@@ -33,7 +33,7 @@ export default async function Post(props: Params) {
         <article className="mb-32">
           <PostHeader
             title={post.title}
-            coverImage={post.coverImage.location}
+            coverImage={`${host}${post.coverImage.location}`}
             date={post.date}
             author={post.author}
           />
@@ -57,8 +57,6 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   if (!post) {
     return notFound();
   }
-
-
   const title = `${post.title} | Next.js Blog Example with ${CMS_NAME}`;
   const images = `${host}${post.ogImage.location}`
 
@@ -71,10 +69,10 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   };
 }
 
-// export async function generateStaticParams() {
-//   const posts = await getAllPosts();
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
 
-//   return posts?.map((post: any) => ({
-//     slug: post.slug,
-//   }));
-// }
+  return posts?.map((post: any) => ({
+    slug: post.slug,
+  }));
+}
