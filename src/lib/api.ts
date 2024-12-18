@@ -36,7 +36,9 @@ export async function getPostBySlug(slug: string) {
     query: `slug=${slug}`
   })
 
-  const authors = await fetchCrudCollection({endpoint: 'authors', query: `_id=${postSlug.authorId}`})
+  console.log('POST SLUG', postSlug)
+
+  const authors = await fetchCrudCollection({endpoint: 'authors', query: `_id=${postSlug[0].authorId}`})
 
   const postSlugWithAuthor = creatPosts(postSlug, authors)
 
@@ -60,6 +62,8 @@ export async function getAllPosts() {
   // return posts;
   const posts = await fetchCrudCollection({endpoint: 'stories'})
   const authors = await fetchCrudCollection({endpoint: 'authors'})
+
+  console.log('GET Authors',authors )
   if(posts) {
     const postsWithAuthors = creatPosts(posts, authors)
     console.log('GET all POSTS', posts)
