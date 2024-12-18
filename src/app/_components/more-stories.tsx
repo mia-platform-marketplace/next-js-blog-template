@@ -1,11 +1,15 @@
 import { Post } from "@/interfaces/post";
 import { PostPreview } from "./post-preview";
+import getConfig from "next/config";
 
 type Props = {
   posts: Post[];
 };
 
-export function MoreStories({ posts }: Props) {
+export function MoreStories({ posts }: Props) {  
+  const {serverRuntimeConfig} = getConfig()
+  const host = `${serverRuntimeConfig?.WEBSITE_BASE_PATH}`
+
   return (
     <section>
       <h2 className="mb-8 text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
@@ -16,7 +20,7 @@ export function MoreStories({ posts }: Props) {
           <PostPreview
             key={post.slug}
             title={post.title}
-            coverImage={post.coverImage.location}
+            coverImage={`${host}${post.coverImage.location}`}
             date={post.date}
             author={post.author}
             slug={post.slug}
