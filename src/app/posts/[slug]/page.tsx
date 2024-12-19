@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/api";
+import { fetchCrudCollection, getAllPosts, getPostBySlug } from "@/lib/api";
 import { CMS_NAME } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
 import Container from "@/app/_components/container";
@@ -14,11 +14,11 @@ import getConfig from "next/config";
 
   const host = `${serverRuntimeConfig?.WEBSITE_BASE_PATH}`
 
-export default async function Post(props: Params) {
+const Post = async(props: Params) => {
+
   const params = await props.params;
   const post = await getPostBySlug(params.slug);
-
-
+  const homePage = await fetchCrudCollection({endpoint: 'home-page'})
 
   if (!post) {
     return notFound();
@@ -29,7 +29,7 @@ export default async function Post(props: Params) {
   return (
     <main>
       <Container>
-        <Header />
+        <Header title={homePage? homePage[0].title : undefined}/>
         <article className="mb-32">
           <PostHeader
             title={post.title}
@@ -76,3 +76,5 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
+
+export default Post

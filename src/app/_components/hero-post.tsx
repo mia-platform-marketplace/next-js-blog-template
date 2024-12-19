@@ -13,7 +13,7 @@ type Props = {
   slug: string;
 };
 
-export async function HeroPost({
+export function HeroPost({
   title,
   coverImage,
   date,

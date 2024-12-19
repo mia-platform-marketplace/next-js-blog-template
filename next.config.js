@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
+    reactStrictMode: true,
     serverRuntimeConfig: {
       CRUD_PATH: "http://crud-service",
       FILES_SERVICE_PATH: "REPLACE_SERVER_ENV_FILES_SERVICE_PATH",
