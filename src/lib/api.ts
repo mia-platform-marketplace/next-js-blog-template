@@ -34,7 +34,7 @@ export async function getPostBySlug(slug: string) {
 }
 
 export async function getAllPosts() {
-  const posts = await fetchCrudCollection({endpoint: 'stories'})
+  const posts = await fetchCrudCollection({endpoint: 'stories', query: '_s=date'})
   const authors = await fetchCrudCollection({endpoint: 'authors'})
 
   if(posts) {
