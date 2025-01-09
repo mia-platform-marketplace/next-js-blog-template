@@ -7,7 +7,7 @@ import getConfig from "next/config";
 
 const Index = async () => {
   const allPosts = await getAllPosts();
-  const homePage = await fetchCrudCollection({endpoint: 'home-page'})
+  const homePage = await fetchCrudCollection({endpoint: 'blog-config'})
 
   const {serverRuntimeConfig} = getConfig()
 

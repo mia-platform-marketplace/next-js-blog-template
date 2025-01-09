@@ -20,7 +20,7 @@
 
 - request:
     method: GET
-    url: /home-page
+    url: /blog-config
   response:
     status: 200
     headers:

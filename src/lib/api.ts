@@ -7,7 +7,7 @@ const {serverRuntimeConfig} = getConfig()
 export const fetchCrudCollection = async ({endpoint, query = ''} : {endpoint: string, query?: string}) => {
     try {
         const data = await fetch(`${serverRuntimeConfig?.CRUD_PATH}/${endpoint}?${query}`, { 
-            next: { revalidate: 60 },
+            next: { revalidate: 5 },
             headers: {
                 'Cache-Control': 'public, max-age=3600',
             }

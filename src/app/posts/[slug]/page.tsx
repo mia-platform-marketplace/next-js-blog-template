@@ -18,7 +18,7 @@ const Post = async(props: Params) => {
 
   const params = await props.params;
   const post = await getPostBySlug(params.slug);
-  const homePage = await fetchCrudCollection({endpoint: 'home-page'})
+  const homePage = await fetchCrudCollection({endpoint: 'blog-config'})
 
   if (!post) {
     return notFound();
