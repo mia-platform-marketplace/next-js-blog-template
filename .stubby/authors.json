@@ -1,0 +1,28 @@
+[
+    {
+      "_id": "675c5d19f3d4cfb21816be98",
+      "firstName": "John",
+      "lastName": "Doe",
+      "__STATE__": "PUBLIC",
+      "coverImage": {
+        "_id": "675c5db3f3d4cfb21816be9a",
+        "name": "759829b266dedd87b6fa5f38840f643f (1).png",
+        "file": "675c5db329b449922f56b223.png",
+        "size": 345048,
+        "location": "assets/blog/authors/jj.jpeg"
+      }
+    },
+    {
+      "_id": "6762a69dfc755b57c9cc621c",
+      "firstName": "Matteo ",
+      "lastName": "Rossi",
+      "coverImage": {
+        "_id": "6762a69cfc755b57c9cc621b",
+        "name": "Fabio Grasso.webp",
+        "file": "6762a69cbf896a3d1b5e149c.webp",
+        "size": 40702,
+        "location": "assets/blog/authors/joe.jpeg"
+      },
+      "__STATE__": "PUBLIC"
+    }
+  ]

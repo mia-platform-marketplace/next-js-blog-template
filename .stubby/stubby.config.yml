@@ -1,0 +1,28 @@
+- request:
+    method: GET
+    url: /stories
+    query:
+      _s: .*
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+    file: stories.json
+
+- request:
+    method: GET
+    url: /authors
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+    file: authors.json
+
+- request:
+    method: GET
+    url: /home-page
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+    file: homePage.json
