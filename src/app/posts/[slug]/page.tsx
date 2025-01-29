@@ -29,7 +29,7 @@ const Post = async(props: Params) => {
   return (
     <main>
       <Container>
-        <Header title={homePage? homePage[0].title : undefined}/>
+        <Header title={homePage? homePage[0]?.title : undefined}/>
         <article className="mb-32">
           <PostHeader
             title={post.title}
