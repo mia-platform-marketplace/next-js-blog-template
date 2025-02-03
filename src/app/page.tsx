@@ -20,7 +20,7 @@ const Index = async () => {
       <Container>
         {allPosts.length? 
         <>
-          <Intro title={homePage? homePage[0]?.title : undefined} />
+          <Intro title={homePage? homePage[0]?.title : 'Blog'} />
           <HeroPost
             title={heroPost.title}
             coverImage={`${host}${heroPost.coverImage.location}`}
