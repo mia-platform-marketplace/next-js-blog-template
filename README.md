@@ -16,6 +16,7 @@ To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) a
 ```
 nvm use v20.18.0
 npm ci
+npm run start:stubby
 npm run dev
 ```
 
